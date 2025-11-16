@@ -1,7 +1,7 @@
-# Jogo-PIFando-com-LogiCa-CAPS-2025-2
-Jogo PIFando com LógicaCa — Entrega 1
+# Jogo-Sobrevivend-a-PIF-com-LogiCa-CAPS-2025-2
+Jogo Sobrevivendo a PIF com LógiCa — Entrega 1
 
-# Projeto de Jogo em C — A DEFINIR
+# Projeto de Jogo em C
 
 ## Equipe
 - Arthur Cavalcanti — @arthurccavalcanti
@@ -17,7 +17,7 @@ Programação Imperativa e Funcional — 2025.2
 CESAR School
 
 ## Nome do Jogo
-A DEFINIR
+Sobrevivendo a PIF com LógiCa
 
 ## Instruções de Compilação (inicial)
 Para compilar:
