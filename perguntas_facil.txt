@@ -1,0 +1,15 @@
+Se Ana estuda matemática então ela passa no exame. Ana não passou no exame. – Deduzimos que é verdadeiro: (A) Ana não estudou matemática (B) Ana estudou matemática (C) Ana passou no exame;A
+Se Pedro é médico então ele trabalha no hospital. Pedro trabalha no hospital. – Deduzimos que é verdadeiro: (A) Pedro não é médico (B) Pedro é médico (C) Não é possível determinar se Pedro é médico;C
+Carlos é programador ou engenheiro. Carlos não é engenheiro. – Deduzimos que é verdadeiro: (A) Carlos não é programador (B) Carlos é programador (C) Carlos é engenheiro;B
+Se Luísa gosta de esportes então ela é saudável. Luísa não gosta de esportes. – Deduzimos que é verdadeiro: (A) Não é possível determinar se Luísa é saudável (B) Luísa é saudável (C) Luísa não é saudável;A
+Se João trabalha na construção civil então ele é engenheiro. João não é engenheiro. – Deduzimos que é verdadeiro: (A) João trabalha na construção civil (B) Não é possível determinar se João trabalha na construção civil (C) João não trabalha na construção civil;C
+Se Pedro estuda à noite então ele passa na prova. Pedro passou na prova. – Deduzimos que é verdadeiro: (A) Pedro estudou à noite (B) Pedro não estudou à noite (C) Não é possível determinar se Pedro estudou à noite;C
+Maria é advogada ou professora. Maria não é advogada. – Deduzimos que é verdadeiro: (A) Maria é professora (B) Maria não é professora (C) Não é possível determinar se Maria é professora;A
+Se Ana tem carro então ela tem carteira de motorista. Ana tem carteira de motorista. – Deduzimos que é verdadeiro: (A) Ana tem carro (B) Ana pode ter ou não ter carro (C) Ana não tem carro;B
+Se Felipe é maior de idade então ele pode votar. Felipe não pode votar. – Deduzimos que é verdadeiro: (A) Felipe não é maior de idade (B) Felipe é maior de idade (C) Não é possível determinar se Felipe é maior de idade;A
+Se Carla estuda francês então ela fala inglês. Carla fala inglês. – Deduzimos que é verdadeiro: (A) Carla estuda francês (B) Não é possível determinar se Carla estuda francês (C) Carla não estuda francês;B
+Se estudo todos os dias, então aprendo lógica. Se aprendo lógica, então passo na prova. Afirmo ser verdadeira a frase: não passo na prova. – Conclui-se que: (A) Aprendo lógica (B) Não estudo todos os dias (C) Passo na prova;B
+Se chove, então o chão está molhado. O chão não está molhado. – Conclui-se que: (A) Está chovendo (B) Não é possível determinar (C) Não choveu;C
+Se estudo à noite, então fico cansado. Fico cansado. – Conclui-se que: (A) Não estudo à noite (B) Estudo à noite (C) Não é possível determinar;C
+Se o carro tem combustível, então liga. O carro não liga. – Conclui-se que: (A) O carro não tem combustível (B) O carro tem combustível (C) Não é possível determinar;C
+Se Pedro treina, então melhora seu desempenho. Pedro não melhora seu desempenho. – Conclui-se que: (A) Pedro treina (B) Não é possível determinar (C) Pedro não treina;C

@@ -1,0 +1,15 @@
+Se Carlos é culpado, então Eva está mentindo. Se Eva está mentindo, então o relatório é falso. O relatório é verdadeiro. – Conclui-se que: (A) Carlos é culpado (B) Carlos não é culpado (C) Eva está mentindo;B
+Se não chover e não ventar, haverá voo. Não houve voo e não ventou. – Conclui-se que: (A) Choveu (B) Não choveu (C) Ventou;A
+Se estudo lógica, fico inteligente. Se não estudo lógica, fico feliz. Não fiquei feliz. – Conclui-se que: (A) Não estudei lógica (B) Fiquei inteligente (C) Não fiquei inteligente;B
+Dizer que "Não é verdade que todo político é honesto" é logicamente equivalente a dizer: (A) Nenhum político é honesto (B) Pelo menos um político não é honesto (C) Todo político é desonesto;B
+Se X é verdade, então Y é verdade. Se Z é verdade, então Y não é verdade. Ora, Y é verdade. – Conclui-se que: (A) Z é falso (B) Z é verdade (C) X é falso;A
+Se Pedro mente, Maria chora. Se Maria chora, o mundo não acaba. O mundo acabou. – Conclui-se que: (A) Pedro mentiu (B) Pedro não mentiu (C) Maria chorou;B
+Ou lógica é fácil ou eu sou um gênio. Se eu sou um gênio, então gabarito a prova. Eu não gabaritei a prova. – Conclui-se que: (A) Eu sou um gênio (B) Lógica não é fácil (C) Lógica é fácil;C
+Se A então B. Se não A então C. Se não B, conclui-se que: (A) então C (B) então A (C) então não C;A
+Dizer que "Se bebo, não dirijo" é falso, implica que: (A) Bebo e dirijo (B) Não bebo e dirijo (C) Bebo e não dirijo;A
+Nenhum cientista é irracional. Alguns teimosos são irracionais. – Conclui-se que: (A) Nenhum cientista é teimoso (B) Alguns teimosos não são cientistas (C) Todo teimoso é cientista;B
+Se o jardim é bonito, as flores crescem. As flores não crescem ou o jardineiro é bom. O jardineiro não é bom. – Conclui-se que: (A) O jardim é bonito (B) O jardim não é bonito (C) As flores crescem;B
+É falso que "Paulo é rico e Ana é pobre". Sabendo que Ana é pobre, conclui-se que: (A) Paulo é rico (B) Paulo não é rico (C) Ana não é pobre;B
+Todo X é Y. Algum Z não é Y. – Conclui-se que: (A) Algum Z não é X (B) Todo Z é X (C) Nenhum Z é X;A
+Se o dólar sobe, a gasolina aumenta. Se a gasolina aumenta, o frete sobe. O frete não subiu. – Conclui-se que: (A) A gasolina aumentou (B) O dólar subiu (C) O dólar não subiu;C
+Se José é culpado, então ou Maria é inocente ou Pedro é cúmplice. Pedro não é cúmplice e Maria não é inocente. – Conclui-se que: (A) José é culpado (B) José não é culpado (C) Pedro é inocente;B

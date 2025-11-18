@@ -1,0 +1,15 @@
+Se Carlos é advogado, então conhece leis. Se conhece leis, então lê muito. Carlos não lê muito. Conclui-se que: (A) Carlos conhece leis (B) Carlos não é advogado (C) Não é possível determinar;B
+Se Luiza viaja, então precisa de passaporte. Se precisa de passaporte, então vai ao consulado. Luiza não foi ao consulado. Conclui-se que: (A) Luiza viajou (B) Luiza não viajou (C) Não é possível determinar;B
+Se estudo matemática, então faço exercícios. Se faço exercícios, então aprendo. Aprendi. Conclui-se que: (A) Estudei matemática (B) Não estudei matemática (C) Não é possível determinar;C
+Se João trabalha, então ganha dinheiro. Se ganha dinheiro, então paga as contas. João não pagou as contas. Conclui-se que: (A) João não trabalhou (B) João trabalhou (C) Não é possível determinar;A
+Se Paula corre, então sua. Se sua, então bebe água. Paula bebeu água. Conclui-se que: (A) Paula correu (B) Paula não correu (C) Não é possível determinar;C
+Se João acorda cedo, então ele caminha. João não caminha. – Conclui-se que: (A) João acordou cedo (B) João não acordou cedo (C) Não é possível determinar;B
+Todo piloto é atento. Alguns músicos são pilotos. – Conclui-se que: (A) Todo músico é atento (B) Alguns músicos são atentos (C) Nenhum músico é atento;B
+Se a bolsa cai, o dólar sobe. O dólar não subiu. – Conclui-se que: (A) A bolsa caiu (B) A bolsa não caiu (C) A bolsa subiu;B
+Se Pedro viajar, ele comprará um presente. Pedro comprou um presente. – Conclui-se que: (A) Pedro viajou (B) Pedro não viajou (C) Não é possível determinar;C
+Ou Ana estuda ou Ana trabalha. Ana não estuda. – Conclui-se que: (A) Ana trabalha (B) Ana não trabalha (C) Ana trabalha e estuda;A
+Se chove, a rua molha. Se a rua molha, escorrega. Choveu. – Conclui-se que: (A) A rua não molhou (B) Não escorrega (C) Escorrega;C
+Nenhum peixe voa. Todo salmão é peixe. – Conclui-se que: (A) Algum salmão voa (B) Nenhum salmão voa (C) Todo peixe é salmão;B
+Se não faz sol, eu leio um livro. Eu não li um livro. – Conclui-se que: (A) Fez sol (B) Não fez sol (C) Choveu;A
+Se o projeto for aprovado, a equipe será promovida. A equipe não foi promovida. – Conclui-se que: (A) O projeto foi aprovado (B) O projeto não foi aprovado (C) O projeto será aprovado futuramente;B
+Todo A é B. Todo B é C. – Conclui-se que: (A) Todo A é C (B) Todo C é A (C) Algum C não é B;A
