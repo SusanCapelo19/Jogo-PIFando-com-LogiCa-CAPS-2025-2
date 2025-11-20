@@ -67,44 +67,6 @@ char* getPalavraSecreta(NivelDificuldade nivel) {
     return sortearLinhaDoArquivo(arquivo);
 }
 
-// --- FUNÇÃO AUXILIAR: Quebra o texto em várias linhas ---
-void desenharTextoQuebrado(int x, int y, const char* texto, int larguraMaxima) {
-    char buffer[200]; // Buffer temporário para uma linha
-    int len = strlen(texto);
-    int inicio = 0;
-    int linhaAtual = 0;
-
-    while (inicio < len) {
-        // Se o resto do texto cabe na linha, imprime tudo
-        if (len - inicio <= larguraMaxima) {
-            telaDrawText(x, y + linhaAtual, (char*)(texto + inicio));
-            break;
-        }
-
-        // Se não cabe, procura o último espaço antes do limite
-        int fim = inicio + larguraMaxima;
-        while (fim > inicio && texto[fim] != ' ') {
-            fim--;
-        }
-
-        // Se não achou espaço, corta na marra
-        if (fim == inicio) {
-            fim = inicio + larguraMaxima;
-        }
-
-        // Copia o pedaço para o buffer
-        int tamanhoPedaco = fim - inicio;
-        strncpy(buffer, texto + inicio, tamanhoPedaco);
-        buffer[tamanhoPedaco] = '\0';
-
-        // Desenha a linha
-        telaDrawText(x, y + linhaAtual, buffer);
-        
-        linhaAtual++;
-        inicio = fim + 1; // Pula o espaço
-    }
-}
-
 // --- FUNÇÃO PEDIR AJUDA ---
 void pedirAjudaLogica(char* letrasDescobertas, const char* palavraSecreta, NivelDificuldade nivel) {
     
@@ -130,7 +92,7 @@ void pedirAjudaLogica(char* letrasDescobertas, const char* palavraSecreta, Nivel
     telaDrawText(5, 3, "--- AJUDA DE THOMAS BAYES ---");
     
     // Desenha a Pergunta (Quebrada em várias linhas)
-    desenharTextoQuebrado(5, 6, pergunta, 70);
+    telaDesenharTextoQuebrado(5, 6, pergunta, 70);
 
     // Prompt de Resposta 
     telaDrawText(5, 15, "Digite sua resposta (A, B ou C): ");

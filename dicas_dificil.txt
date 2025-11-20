@@ -1,0 +1,9 @@
+DICA: Chama-se negação de uma proposição p a proposição representada por “não p”, cujo valor lógico é a verdade(V) quando p é falsa e a falsidade(F) quando p é verdadeira.
+DICA: Uma conjunção só será verdadeira, se ambas as proposições componentes forem também verdadeiras.
+DICA: Numa conjunção, basta que uma das proposições componentes seja falsa, e a conjunção será – toda ela – falsa.
+DICA: Numa conjunção, o resultado falso também ocorrerá quando ambas as proposições componentes forem falsas.
+DICA: Uma disjunção será falsa quando as duas partes que a compõem forem ambas falsas.
+DICA: Uma disjunção exclusiva só será verdadeira se obedecer à mútua exclusão das sentenças.
+DICA: Uma condicional só será falsa, quando houver a condição suficiente, mas o resultado necessário não se confirmar.
+DICA: Haverá duas situações em que a bicondicional será verdadeira: quando antecedente e consequente forem ambos verdadeiros, ou quando forem ambos falsos. Nos demais casos, a bicondicional será falsa.
+DICA: Se (p <-> q) tem que ser Verdadeiro, então p = V e q = V ou então p = F e q = F.

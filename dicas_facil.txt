@@ -1,0 +1,9 @@
+DICA: Na Conjunção (^), a expressão só é Verdadeira se ambos forem V.
+DICA: Na Disjunção (v), basta um ser Verdadeiro para a expressão ser V.
+DICA: A Negação (~) inverte o valor: se P é V, ~P eh F.
+DICA: Na Condicional (->), só da Falso se o primeiro for V e o segundo F.
+DICA: Tente resolver primeiro as expressões simples (apenas P, Q ou R).
+DICA: Se (P ^ Q) deve ser V, então obrigatoriamente P=V e Q=V.
+DICA: Se (P v Q) deve ser F, então obrigatoriamente P=F e Q=F.
+DICA: Se ~P deve ser V, então P deve ser F.
+DICA: Se o alvo é Falso na conjunção (^), tente deixar uma das variáveis Falso.

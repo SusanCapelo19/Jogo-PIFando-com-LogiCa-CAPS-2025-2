@@ -1,35 +1,39 @@
 #ifndef LOGICA_H
 #define LOGICA_H
 
-#include <stdbool.h> 
+#include <stdbool.h>
 
-// Enum para os operadores lógicos
+// Enum para os tipos de nós na árvore lógica
 typedef enum {
-    ATOMO,  // p, q, r
-    NAO,    // ~
-    E,      // ∧
-    OU,     // ∨
-    IMPLICA // ->
+    ATOMO,          // P, Q, R, S
+    NAO,            // ~
+    E,              // ^
+    OU,             // v
+    CONDICIONAL,        // ->
+    XOU,            // (+) Disjunção Exclusiva
+    BICONDICIONAL   // <-> Bicondicional
 } TipoOperador;
 
-// Struct RECURSIVA para a árvore de expressão
+// Struct RECURSIVA
 typedef struct Proposicao {
     TipoOperador tipo;
-
-    char* nomeAtomo;
-    bool valorAtomo; // O valor V/F que o jogador define
-
-    // Se for OPERADOR (NAO, E, OU, IMPLICA)
-    struct Proposicao* esq; 
-    struct Proposicao* dir; 
+    char nomeAtomo;  
+    bool valorAtomo; 
+    struct Proposicao* esq;
+    struct Proposicao* dir;
 } Proposicao;
 
-// Protótipos das funções
-Proposicao* criarAtomo(char* nome);
+// --- Funções de Criação (Alocação Dinâmica) ---
+Proposicao* criarAtomo(char nome, bool valorInicial);
 Proposicao* criarOperador(TipoOperador tipo, Proposicao* esq, Proposicao* dir);
-void destruirProposicao(Proposicao* prop); // Importante para liberar memória!
+Proposicao* criarNegacao(Proposicao* filho);
 
-// A função RECURSIVA principal
-bool avaliar(Proposicao* prop);
+// --- Função Principal (Recursividade) ---
+bool avaliar(Proposicao* p);
+
+// --- Funções Utilitárias ---
+void destruirProposicao(Proposicao* p); // Limpa a memória
+void atualizarValorAtomo(Proposicao* p, char nome, bool novoValor); // Atualiza P, Q, R, S na árvore
+void imprimirExpressao(Proposicao* p, char* buffer); // Transforma a árvore em texto para desenhar na tela
 
 #endif

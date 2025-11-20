@@ -1,0 +1,9 @@
+DICA: Negação de uma proposição (~p), ocorre quando o valor lógico inicialmente verdade(V) se torna falso(F) e vice-versa.
+DICA: Numa conjunção (^), basta que uma das proposições componentes seja falsa, e a conjunção será – toda ela – falsa.
+DICA: Uma conjunção (^), o resultado falso também ocorrerá quando ambas as proposições componentes forem falsas.
+DICA: Uma disjunção (v) será falsa quando as duas partes que a compõem forem ambas falsas.
+DICA: Uma disjunção exclusiva (+) só será verdadeira se houver uma das sentenças verdadeira e a outra falsa. Nos demais casos, a disjunção exclusiva será falsa.
+DICA: Uma condicional (->) só será falsa quando a primeira parte for verdadeira, e a segunda for falsa. Nos demais casos, a condicional será verdadeira.
+DICA: Se (P ^ Q) deve ser V, então obrigatoriamente P=V e Q=V.
+DICA: Se (P v Q) deve ser F, então obrigatoriamente P=F e Q=F.
+DICA: Lembre-se: V -> F é Falso (F).

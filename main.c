@@ -14,6 +14,7 @@ typedef enum {
     CUTSCENE_INICIAL,
     CUTSCENE_FORCA,
     FASE_1,
+    CUTSCENE_BOMBA,
     FASE_2,
     FASE_3,
     GAME_OVER,
@@ -85,7 +86,7 @@ int main() {
                 else if (estadoMenu == 1) { 
                     // --- Estado 1: Escolhendo Dificuldade ---
                     
-                    if (key == 13 || key == 10) { // ENTER - Seleção Final!
+                    if (key == 13 || key == 10) { // ENTER - Seleção Final
                         // Converter índice para o Enum
                         if (dificuldadeIdx == 0) nivel = FACIL;
                         else if (dificuldadeIdx == 1) nivel = MEDIO;
@@ -153,14 +154,25 @@ int main() {
                 }
                 break;
 
-
             // --- LÓGICA DA FASE 1 ---
             case FASE_1:
                 if (executarFaseForca(jogador)) {
-                    estadoAtual = FASE_2; // Passa para Fase 2 se vencer
+                    estadoAtual = CUTSCENE_BOMBA; // Passa para Fase 2 se vencer
                 } else {
                     venceu = false;
                     estadoAtual = GAME_OVER; // Se perder
+                }
+                break;
+
+            //--- CUTSCENE BOMBA ---
+            case CUTSCENE_BOMBA:
+                telaDesenharCutsceneBomba();
+                telaRefresh();
+                
+                // Espera ENTER
+                int keyBomba = telaGetKey();
+                if (keyBomba == 13 || keyBomba == 10) {
+                    estadoAtual = FASE_2; 
                 }
                 break;
 
@@ -174,7 +186,7 @@ int main() {
                 }
                 break;
 
-            // --- LÓGICA DA FASE 3 ---
+            // --- LÓGICA DA FASE 3 (AINDA IMPLEMENTANDO)---
             case FASE_3:
                 if (executarFaseGalaga(jogador)) {
                     venceu = true; // Vencendo o jogo!
