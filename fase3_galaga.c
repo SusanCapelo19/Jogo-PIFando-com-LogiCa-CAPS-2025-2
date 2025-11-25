@@ -11,8 +11,6 @@
 
 #define _DEFAULT_SOURCE 
 
-
-
 // --- VARIÁVEIS GLOBAIS DA FASE ---
 static NaveJogador nave;
 static Inimigo inimigos[MAX_INIMIGOS];
@@ -204,7 +202,7 @@ bool desafioLogitech(int rodada, NivelDificuldade nivel) {
     telaClear();
     telaSetColor(CYAN, BLACK);
     telaDrawText(10, 5, "=== SISTEMA LOGITECH ATIVADO ===");
-    telaDrawText(10, 7, "Traduza a sentenca para ganhar o Power-Up:");
+    telaDrawText(10, 7, "Traduza a sentença para ganhar o Power-Up:");
     telaSetColor(WHITE, BLACK);
     telaDesenharTextoQuebrado(10, 10, p, 60);
     telaSetColor(YELLOW, BLACK);

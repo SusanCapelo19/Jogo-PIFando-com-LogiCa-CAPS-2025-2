@@ -155,8 +155,8 @@ bool executarFaseBomba(Jogador* jogador) {
     int selecionado = 0; 
     
     // CONFIGURAÇÃO DO TEMPO
-    int tempoRestante = 240; // Segundos
-    if (jogador->nivel == MEDIO) tempoRestante = 180;
+    int tempoRestante = 180; // Segundos
+    if (jogador->nivel == MEDIO) tempoRestante = 150;
     if (jogador->nivel == DIFICIL) tempoRestante = 120;
 
     // Inicializa o timer em milisegundos  

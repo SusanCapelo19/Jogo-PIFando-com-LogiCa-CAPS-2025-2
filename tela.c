@@ -34,13 +34,13 @@ const char* BODY_PARTS[] = {
 
 // --- ARTE DO BOSS GALAGA ---
 const char* BOSS_ART[] = {
-    "      /---\\  /---\\      ",
+    "      /---\\   /---\\      ",
     "     |  O  | |  O  |     ",
     "   __|-----|_|-----|__   ",
-    "  /  |   | |_|   | |  \\  ",
+    "  /  |  |  |_|  |  |  \\  ",
     " |   \\__|_______|__/   | ",
-    " |       |   V   |      | ",
-    " |       |_______|      | ",
+    " |      |   V   |      | ",
+    " |      |_______|      | ",
     "  \\     /       \\     /  ",
     "   \\   /         \\   /   ",
     "    \\_/           \\_/    "
@@ -497,7 +497,7 @@ void telaDesenharFaseBomba(bool alvo[9], Proposicao* matriz[9], bool atomos[3], 
     telaDrawText(3, 2, buffer);
     
     telaSetColor(WHITE, BLACK);
-    const char* tituloAlvo = "PADRAO ALVO:";
+    const char* tituloAlvo = "PADRÃO ALVO:";
     telaDrawText((MAXX - strlen(tituloAlvo))/2, 3, (char*)tituloAlvo);
     
     int xAlvoBase = (MAXX - (3 * 4)) / 2; 
@@ -911,7 +911,7 @@ void telaDesenharCutsceneFinal(void) {
         "  |     |       |         |     |       |         |           |  ",
         "  |     |       |         |     |       |         |     *     |  ",
         "  |     |       |    *    |     |       |         |    /|\\    |  ",
-        "  |     |       |   /|\\   |     |       |         |   / | \\  |  ",
+        "  |     |       |   /|\\   |     |       |         |   / | \\   |  ",
         "  |_____|_______|____|____|_____|_______|_________|_____|_____|  ",
         "    // // // // // // // // // // // // // // // // // // //     "
     };
