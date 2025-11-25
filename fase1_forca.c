@@ -1,33 +1,33 @@
 #include "fase1_forca.h"
 #include "tela.h" 
+#include "timer.h" 
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
 #include <time.h> 
+#include <unistd.h> 
 
-// Função auxiliar para remover o \n do final da string lida do arquivo
+// --- FUNÇÕES AUXILIARES ---
+
 void trim(char* str) {
     str[strcspn(str, "\r\n")] = 0;
 }
 
-// Função auxiliar para sortear uma linha de um arquivo
 char* sortearLinhaDoArquivo(const char* nomeArquivo) {
     FILE* file = fopen(nomeArquivo, "r");
     if (!file) {
-        // Se não achar o arquivo, retorna um valor padrão para não travar
         char* backup = (char*)malloc(20);
         strcpy(backup, "ERRO_FILE");
         return backup;
     }
 
-    // Conta quantas linhas tem o arquivo
     int linhas = 0;
-    char buffer[256];
+    char buffer[512]; 
     while (fgets(buffer, sizeof(buffer), file)) {
-        if (strlen(buffer) > 2) linhas++; // Ignora linhas vazias
+        if (strlen(buffer) > 2) linhas++; 
     }
-    rewind(file); // Volta para o inicio
+    rewind(file); 
 
     if (linhas == 0) {
         fclose(file);
@@ -36,13 +36,12 @@ char* sortearLinhaDoArquivo(const char* nomeArquivo) {
         return backup;
     }
 
-    // Sorteia uma linha
     int linhaSorteada = rand() % linhas;
     int atual = 0;
     char* resultado = NULL;
 
     while (fgets(buffer, sizeof(buffer), file)) {
-        if (strlen(buffer) <= 2) continue; // Pula vazias
+        if (strlen(buffer) <= 2) continue; 
 
         if (atual == linhaSorteada) {
             trim(buffer);
@@ -57,13 +56,10 @@ char* sortearLinhaDoArquivo(const char* nomeArquivo) {
     return resultado;
 }
 
-// Seleciona a palavra secreta baseada no nível
 char* getPalavraSecreta(NivelDificuldade nivel) {
-    const char* arquivo = "palavras_facil.txt"; // Padrão
-    
+    const char* arquivo = "palavras_facil.txt"; 
     if (nivel == MEDIO) arquivo = "palavras_medio.txt";
     else if (nivel == DIFICIL) arquivo = "palavras_dificil.txt";
-
     return sortearLinhaDoArquivo(arquivo);
 }
 
@@ -75,80 +71,133 @@ void pedirAjudaLogica(char* letrasDescobertas, const char* palavraSecreta, Nivel
     else if (nivel == DIFICIL) arquivo = "perguntas_dificil.txt";
 
     char* linhaCompleta = sortearLinhaDoArquivo(arquivo);
-    
-    // Separa Pergunta e Resposta
-    char* pergunta = strtok(linhaCompleta, ";");
-    char* respostaCorretaStr = strtok(NULL, ";");
-    char respostaCorreta = 'A'; 
+    if (!linhaCompleta) return;
 
-    if (respostaCorretaStr != NULL) {
-        respostaCorreta = toupper(respostaCorretaStr[0]);
+    // Separa a Pergunta+Opções do Gabarito (Delimitador)
+    char* textoBase = strtok(linhaCompleta, ";");
+    char* gabaritoStr = strtok(NULL, ";");
+    char respostaCorreta = (gabaritoStr) ? toupper(gabaritoStr[0]) : 'A'; 
+
+    // Tenta separar as opções (A), (B), (C) dentro do texto base
+    char* ptrA = strstr(textoBase, "(A)");
+    char* ptrB = (ptrA) ? strstr(ptrA, "(B)") : NULL;
+    char* ptrC = (ptrB) ? strstr(ptrB, "(C)") : NULL;
+
+    char pergunta[300] = "";
+    char optA[100] = "";
+    char optB[100] = "";
+    char optC[100] = "";
+
+    // Se conseguiu achar as 3 opções, separa as strings
+    if (ptrA && ptrB && ptrC) {
+        // Copia a pergunta (do inicio até o (A))
+        int lenP = ptrA - textoBase;
+        strncpy(pergunta, textoBase, lenP);
+        pergunta[lenP] = '\0';
+
+        // Copia A (do (A) até o (B))
+        int lenA = ptrB - ptrA;
+        strncpy(optA, ptrA, lenA);
+        optA[lenA] = '\0';
+
+        // Copia B (do (B) até o (C))
+        int lenB = ptrC - ptrB;
+        strncpy(optB, ptrB, lenB);
+        optB[lenB] = '\0';
+
+        // Copia C (do (C) até o fim)
+        strcpy(optC, ptrC);
+    } else {
+        // se não achar a formatação, imprime tudo na pergunta
+        strcpy(pergunta, textoBase);
     }
 
-    // --- DESENHO DA TELA DE AJUDA ---
+    // --- DESENHO DA TELA ---
     telaClear();
     
-    telaSetColor(WHITE, BLACK);
-    telaDrawText(5, 3, "--- AJUDA DE THOMAS BAYES ---");
+    // Cabeçalho 
+    telaSetColor(CYAN, BLACK);
+    telaDrawText(10, 5, "=== AJUDA DE THOMAS BAYES ===");
+    telaDrawText(10, 7, "Responda corretamente para revelar uma letra:");
     
-    // Desenha a Pergunta (Quebrada em várias linhas)
-    telaDesenharTextoQuebrado(5, 6, pergunta, 70);
+    // Pergunta 
+    telaSetColor(WHITE, BLACK);
+    // Desenha a pergunta, quebra linha se for longa
+    telaDesenharTextoQuebrado(10, 10, pergunta, 60);
+    
+    // Opções na vertical
+    telaSetColor(YELLOW, BLACK);
+    if (strlen(optA) > 0) {
+        telaDrawText(10, 14, optA);
+        telaDrawText(10, 15, optB);
+        telaDrawText(10, 16, optC);
+    } else {
+        // Se caiu no fallback, as opções já estão no texto da pergunta
+    }
 
-    // Prompt de Resposta 
-    telaDrawText(5, 15, "Digite sua resposta (A, B ou C): ");
+    // Prompt
+    telaSetColor(WHITE, BLACK);
+    telaDrawText(10, 19, "Digite sua resposta (A, B ou C): ");
     telaRefresh();
     
+    // Input
     int key = telaGetKey();
     char respostaUsuario = toupper(key);
 
-    telaDrawText(5, 17, "Sua resposta: ");
+    // Mostra o que digitou
+    // Limpa a linha antes
+    telaDrawText(10, 19, "                                 "); 
+    telaDrawText(10, 19, "Sua resposta: ");
     char display[2] = {respostaUsuario, '\0'};
-    telaDrawText(20, 17, display);
+    telaSetColor(YELLOW, BLACK);
+    telaDrawText(25, 19, display);
 
+    // Validação
     if (respostaUsuario == respostaCorreta) {
         telaSetColor(GREEN, BLACK);
-        telaDrawText(5, 19, "CORRETO! O MISTERIO SE CLAREIA...");
+        telaDrawText(10, 21, "CORRETO! O MISTÉRIO SE CLAREIA...");
         
-        // Revela uma letra
+        // Revela letra
         int len = strlen(palavraSecreta);
         int revelada = 0;
-        // Tenta revelar uma letra ainda não descoberta
         for(int i=0; i<len; i++) {
             if(letrasDescobertas[i] == '_') {
-                letrasDescobertas[i] = palavraSecreta[i];
-                // Revela todas as ocorrências dessa mesma letra
-                char letraRevelada = palavraSecreta[i];
+                char letraAlvo = palavraSecreta[i];
+                // Revela todas as ocorrências dessa letra
                 for(int j=0; j<len; j++) {
-                     if(palavraSecreta[j] == letraRevelada) letrasDescobertas[j] = letraRevelada;
+                     if(palavraSecreta[j] == letraAlvo) letrasDescobertas[j] = letraAlvo;
                 }
                 revelada = 1;
                 break; 
             }
         }
-        if(!revelada) { // Se já descobriu tudo, nada acontece
-        }
-
     } else {
         telaSetColor(RED, BLACK);
-        telaDrawText(5, 19, "ERRADO! A LOGICA É IMPLACÁVEL.");
+        telaDrawText(10, 21, "ERRADO! A LÓGICA É IMPLACÁVEL.");
     }
     
-    telaSetColor(YELLOW, BLACK);
-    telaDrawText(5, 22, "Pressione qualquer tecla para voltar...");
     telaRefresh();
-    telaGetKey();
-
+    
+    // Pausa para ler
+    #ifdef _WIN32
+        _sleep(1500);
+    #else
+        usleep(1500000); 
+    #endif
+    
     free(linhaCompleta);
 }
 
 bool executarFaseForca(Jogador* jogador) {
-    // Inicializa random
     srand(time(NULL));
 
     char* palavraSecreta = getPalavraSecreta(jogador->nivel);
+    
+    // Tratamento de string manual
     if (strcmp(palavraSecreta, "ERRO_FILE") == 0) {
         free(palavraSecreta);
-        palavraSecreta = strdup("LOGICA"); 
+        palavraSecreta = (char*)malloc(7);
+        strcpy(palavraSecreta, "LOGICA");
     }
 
     int tamPalavra = strlen(palavraSecreta);
@@ -170,13 +219,11 @@ bool executarFaseForca(Jogador* jogador) {
         
         telaRefresh();
 
-        // Verifica Vitória
         if (strchr(letrasDescobertas, '_') == NULL) {
             vitoria = true;
-            jogador->pontuacao += 100; // Bônus de Vitória
+            jogador->pontuacao += 100; 
             break;
         }
-        // Verifica Derrota
         if (erros >= 6) {
             vitoria = false;
             break;
@@ -184,13 +231,12 @@ bool executarFaseForca(Jogador* jogador) {
 
         int key = telaGetKey();
 
-        // Ajuda
         if (key == '0') {
             if (ajudasRestantes > 0) {
                 pedirAjudaLogica(letrasDescobertas, palavraSecreta, jogador->nivel);
                 ajudasRestantes--;
-                jogador->pontuacao -= 5; // Penalidade Ajuda
-                if (jogador->pontuacao < 0) jogador->pontuacao = 0; // Não deixa negativo
+                jogador->pontuacao -= 5; 
+                if (jogador->pontuacao < 0) jogador->pontuacao = 0; 
             }
             continue;
         }
@@ -212,7 +258,7 @@ bool executarFaseForca(Jogador* jogador) {
         }
 
         if (acertou) {
-            jogador->pontuacao += 10; // Pontos por acerto
+            jogador->pontuacao += 10; 
         } else {
             erros++;
             letrasTentadas[numTentadas] = letraMaiuscula;
@@ -221,9 +267,20 @@ bool executarFaseForca(Jogador* jogador) {
             numTentadas++;
             letrasTentadas[numTentadas] = '\0';
             
-            jogador->pontuacao -= 5; // Penalidade por erro
+            jogador->pontuacao -= 5; 
              if (jogador->pontuacao < 0) jogador->pontuacao = 0;
         }
+    }
+
+    if (vitoria) {
+        telaSetColor(GREEN, BLACK);
+        telaDrawText(30, 12, "VOCÊ SE SAFOU!");
+        telaRefresh();
+        #ifdef _WIN32
+            _sleep(2000);
+        #else
+            usleep(2000000);
+        #endif
     }
 
     if (vitoria) {

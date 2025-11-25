@@ -1,11 +1,9 @@
-#include "fase2_bomba.h"
-#include "tela.h"
-#include "logica.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
-// INCLUI O TIMER DA BIBLIOTECA
+#include "fase2_bomba.h"
+#include "tela.h"
+#include "logica.h"
 #include "timer.h" 
 
 // Variáveis Globais da Fase
@@ -93,7 +91,7 @@ Proposicao* gerarExpressaoAleatoria(NivelDificuldade nivel) {
         return criarNegacao(criarAtomo(nomesAtomos[idx], false));
     } 
     else {
-        // Operador Binário (Obrigatório para Médio/Difícil)
+        // Operador Binário, obrigatório para Médio/Difícil
         int op;
         
         if (nivel == FACIL) {
@@ -101,11 +99,11 @@ Proposicao* gerarExpressaoAleatoria(NivelDificuldade nivel) {
              op = (rand() % 2) + 2; 
         }
         else if (nivel == MEDIO) {
-            // Médio: E, OU, IMPLICA, XOR
+            // Médio: E, OU, CONDICIONAL, XOR
             op = (rand() % 4) + 2; 
         } 
         else { 
-            // Dificil: Tudo (incluindo BICONDICIONAL)
+            // Dificil: Tudo, incluindo BICONDICIONAL
             op = (rand() % 5) + 2; 
         }
         
@@ -171,7 +169,7 @@ bool executarFaseBomba(Jogador* jogador) {
     char textoAjuda[256] = ""; 
 
     // --- GAME LOOP ---
-    // O loop roda livremente para pegar input rápido,mas a tela e o tempo só atualizam quando o timer mandar.
+    // O loop roda livremente para pegar input rápido, mas a tela e o tempo só atualizam quando o timer mandar.
     while (!vitoria && !derrota) {
         
         // Lógica do Timer da Biblioteca
@@ -229,11 +227,10 @@ bool executarFaseBomba(Jogador* jogador) {
     // Limpeza
     for(int i=0; i<9; i++) destruirProposicao(matrizExpressoes[i]);
     
-    // Importante: Desliga o timer ao sair da fase
+    // Desliga o timer ao sair da fase
     timerDestroy(); 
 
     if (vitoria) {
-        telaClear();
         telaSetColor(GREEN, BLACK);
         telaDrawText(30, 12, "BOMBA DESARMADA!");
         
@@ -243,11 +240,21 @@ bool executarFaseBomba(Jogador* jogador) {
         jogador->pontuacao += tempoRestante;
         
         telaRefresh();
-        // Pequena espera
-        timerInit(2000); // 2 segundos
+        // Espera de 2 segundos
+        timerInit(2000);
         while (!timerTimeOver());
         timerDestroy();
     }
 
+    if (vitoria) {
+        telaClear();
+        telaDesenharVitoriaFase2(jogador->pontuacao);
+        telaRefresh();
+        while(true) {
+            int k = telaGetKey();
+            if (k == 13 || k == 10) break;
+        }
+    } 
+
     return vitoria;
-}   
+} 
