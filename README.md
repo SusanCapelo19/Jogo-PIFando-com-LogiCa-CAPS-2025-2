@@ -6,7 +6,7 @@
 
 ---
 
-## Resumo e Narrativa
+## Narrativa
 O jogador assume o papel de um estudante de PIF que, ao executar um código misterioso deixado pelo professor em sua máquina, abre um portal de viagem no tempo. 
 
 Para ser aprovado na disciplina (e sobreviver), ele deve vencer três desafios em três eras diferentes (Passado, Presente e Futuro). Em cada desafio, a **Lógica Proposicional** será sua única arma e aliada para resolver os problemas e retornar ao presente.
