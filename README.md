@@ -15,7 +15,7 @@ Para ser aprovado na disciplina (e sobreviver), ele deve vencer três desafios e
 
 ## Mecânicas do Jogo
 
-O jogo é dividido em três fases distintas, cada uma testando uma habilidade diferente de lógica e programação:
+O jogo é dividido em três fases distintas, cada uma testando uma habilidade diferente de lógica:
 
 ### Fase 1: O Passado (Séc. XVIII) - Jogo da Forca
 * **Cenário:** Inglaterra, corte do Rei Jorge II.
